@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.store.mapper.OrderMapper">
+
+	<!-- <resultMap id="OrederEntityMap" type="cn.tedu.store.entity.Order">
+		<id column="oid" property="oid" />
+		<result column="uid" property="uid" />
+		<result column="recv_name" property="recvName" />
+		<result column="recv_phone" property="recvPhone" />
+		<result column="recv_province" property="recvProvince" />
+		<result column="recv_city" property="recvCity" />
+		<result column="recv_area" property="recvArea" />
+		<result column="recv_address" property="recvAddress" />
+		<result column="total_price" property="totalPrice" />
+		<result column="status" property="status" />
+		<result column="order_time" property="orderTime" />
+		<result column="pay_type" property="payType" />
+		<result column="pay_time" property="payTime" />
+		<result column="created_user" property="createdUser" />
+		<result column="created_time" property="createdTime" />
+		<result column="modified_user" property="modifiedUser" />
+		<result column="modified_time" property="modifiedTime" />
+	</resultMap>
+	
+	<resultMap id="OrederItmeEntityMap" type="cn.tedu.store.entity.OrderItme">
+		<id column="id" property="id" />
+		<result column="oid" property="oid" />
+		<result column="pid" property="pid" />
+		<result column="title" property="title" />
+		<result column="image" property="image" />
+		<result column="price" property="price" />
+		<result column="num" property="num" />
+		<result column="created_user" property="createdUser" />
+		<result column="created_time" property="createdTime" />
+		<result column="modified_user" property="modifiedUser" />
+		<result column="modified_time" property="modifiedTime" />
+	</resultMap> -->
+	
+	<!-- 创建订单 -->
+	<!-- Integer saveOrder(Order order); -->
+	<insert id="saveOrder" useGeneratedKeys="true" keyProperty="oid">
+			insert into t_order(
+			uid,recv_name,
+			recv_phone,recv_province,recv_city,
+			recv_area,recv_address,total_price,
+			status,order_time,pay_type,
+			pay_time,created_user,created_time,
+			modified_user,modified_time)
+		values(
+			#{uid},#{recvName},#{recvPhone},
+			#{recvProvince},#{recvCity},#{recvArea},
+			#{recvAddress},#{totalPrice},#{status},
+			#{orderTime},#{payType},#{payTime},
+			#{createdUser},#{createdTime},#{modifiedUser},
+			#{modifiedTime})
+	</insert>
+	
+	<!-- 创建订单商品 -->
+	<!-- Integer saveOrderItme(OrderItme orderItme); -->
+	<insert id="saveOrderItme" useGeneratedKeys="true" keyProperty="id">
+		insert into t_order_itme(
+			oid,pid,title,
+			image,price,num,
+			created_user,created_time,modified_user,
+			modified_time)
+		values(
+			#{oid},#{pid},#{title},
+			#{image},#{price},#{num},
+			#{createdUser},#{createdTime},#{modifiedUser},
+			#{modifiedTime})
+	</insert>
+	
+</mapper>
